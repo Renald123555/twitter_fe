@@ -10,6 +10,8 @@ import { PostContext } from '../context/PostContext'
 import { UserContext } from '../context/UserContext'
 import { SearchContext } from '../context/SearchContext'
 import Form from "react-bootstrap/Form";
+import { toast } from "react-toastify";
+
 
 
 import twitterAvatar from '../../static/image/twitterAvatar.png'
@@ -171,11 +173,23 @@ function HomePost() {
     setDate(e.target.value);
   };
 
+  const showEditToast = () =>
+    toast.success("Edited Data Saved", {
+      position: toast.POSITION.BOTTOM_RIGHT,
+      theme: "colored",
+    });
+
+  const showDeleteToast = () =>
+    toast.error("Data Deleted", {
+      position: toast.POSITION.BOTTOM_RIGHT,
+      theme: "colored",
+    });
+
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleCloseAccepted = async (id) => {
-    console.log('close')
+    showDeleteToast();
     setShow(false)
     const body = {
       id: id
@@ -183,7 +197,8 @@ function HomePost() {
     const response = await GetApi.deletePost(body)
     const res = await response.data
     if (res.message === 'Success') {
-      history.go(0)
+      setTimeout(() => { history.go(0) }, 1100)
+
     }
   };
   const handleShow = () => setShow(true);
@@ -435,9 +450,9 @@ function HomePost() {
         </div>
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
+            <Modal.Title>Delete tweet</Modal.Title>
           </Modal.Header>
-          <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+          <Modal.Body>Are you sure want to delete this tweet?</Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
               Close

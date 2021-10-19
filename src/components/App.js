@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+
 
 import { PostContextProvider } from "./context/PostContext";
 import { LoginContextProvider } from "./context/LoginContext";
@@ -26,6 +28,12 @@ class App extends Component {
               <UserContextProvider>
                 <SearchContextProvider>
                   <PostContextProvider>
+                    <ToastContainer
+                      closeOnClick
+                      pauseOnFocusLoss={false}
+                      autoClose={1000}
+                      pauseOnHover={false}
+                    />
                     <Route exact path="/" component={Entry} />
                     <PrivateRoute exact path="/home" component={Home} />
                     <Route exact path="/login" component={Login} />
