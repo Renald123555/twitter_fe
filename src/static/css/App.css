@@ -1,0 +1,21 @@
+.default-hover {
+  cursor: pointer;
+}
+
+.stickyright {
+  margin-left: auto;
+}
+
+.default-hover:hover {
+  background-color: #e8f5f3;
+  /* color: #1da1f2; */
+  /* opacity: 0.5; */
+  border-radius: 35px;
+}
+
+.default-button {
+}
+
+.default-button:hover {
+  background-color: #1a91da;
+}
