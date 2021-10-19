@@ -4,7 +4,6 @@ import HomeNav from './containers/HomeNav'
 import HomePost from './containers/HomePost'
 import HomeSearch from './containers/HomeSearch'
 
-import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 

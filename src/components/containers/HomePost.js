@@ -132,6 +132,7 @@ function HomePost() {
   }
 
   const updateData = async () => {
+    showEditToast();
     const body = {
       id: editData.id,
       text: editData.text,
@@ -140,7 +141,8 @@ function HomePost() {
     const response = await GetApi.updatePost(body)
     const res = await response.data
     if (res.message === 'Success') {
-      history.go(0)
+      setTimeout(() => { history.go(0) }, 1100)
+
     }
   }
 
