@@ -106,11 +106,9 @@ function Signup() {
       phone: values.phone,
       dob: values.year + '-' + values.month + '-' + values.day
     }
-    console.log('body', body)
     try {
       const response = await GetApi.registerUser(body)
       const res = await response.data
-      console.log('res', res)
       if (res.message === 'Success') {
         history.push('/login')
       } else {

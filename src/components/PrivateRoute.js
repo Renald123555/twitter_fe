@@ -16,7 +16,6 @@ function PrivateRoute({ component: Component, ...rest }) {
 
   const getUserToken = async () => {
     const cacheToken = await localforage.getItem('token')
-    console.log('useeffect')
     if (!_.isEmpty(cacheToken)) {
       //   console.log('token cache', cacheToken)
       const response = await GetApi.authUser(cacheToken)

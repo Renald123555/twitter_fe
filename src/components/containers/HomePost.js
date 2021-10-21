@@ -79,7 +79,6 @@ function HomePost() {
 
   const handleImageChange = (e) => {
     if (e.target.files && e.target.files[0]) {
-      console.log('val', e.target.files[0])
       const files = new FormData()
       files.append('file', e.target.files[0])
       setValues((val) => ({
@@ -91,7 +90,6 @@ function HomePost() {
   }
 
   const editClick = (data) => {
-    console.log('data', data)
     setEdit((val) => ({
       ...val,
       id: data.id,
