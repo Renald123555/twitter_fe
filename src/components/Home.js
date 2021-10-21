@@ -9,12 +9,10 @@ import "react-toastify/dist/ReactToastify.css";
 
 
 function Home() {
-  const [component, setComponent] = useState(["HomeNav", "HomePost", "HomeSearch"])
+  const [component, setComponent] = useState(["HomePost", "HomeSearch"])
 
   const listComponent = name => {
-    if (name === "HomeNav") {
-      return <HomeNav />
-    } else if (name === "HomePost") {
+    if (name === "HomePost") {
       return <HomePost />
     } else {
       return <HomeSearch />
@@ -30,16 +28,20 @@ function Home() {
   }
 
   return (
-    <div id="home" className='home container'>
+    <div id="home" className='home container d-flex'>
+      <div className="col-3">
+        <HomeNav />
+      </div>
       <DragDropContext onDragEnd={onDragEnd}>
         <div className='row'>
           <Droppable droppableId="home" direction="horizontal" type="COLUMN">
             {provided => (
               <div ref={provided.innerRef} {...provided.droppableProps} className='d-flex'>
+
                 {component.map((data, index) => {
                   return (<Draggable key={data} draggableId={data} index={index}>
                     {provided => (
-                      <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                      <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} className={data === "HomePost" ? "col-10" : "col-4"}>
                         {listComponent(data)}
                       </div>
                     )}

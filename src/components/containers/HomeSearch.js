@@ -135,12 +135,12 @@ function HomeSearch() {
   }
 
   return (
-    <div id="homeSearch" className='' style={{ flexBasis: "100%" }}>
+    <div id="homeSearch" className='row' style={{ flexBasis: "100%" }}>
       <DragDropContext onDragEnd={onDragEnd}>
-        <div className='row'>
+        <div >
           <div className='sticky-top bg-white'>
             <div className='pt-3 pl-3 mb-2 pb-1'>
-              <div className='input-group mb-2'>
+              <div className='mb-2'>
                 <div className='input-group-prepend'>
                   <div className='input-group-text border-0' style={{ backgroundColor: '#f6f6f6', borderRadius: '40px 0 0 40px' }}>
                     <i className='fa fa-search' />
