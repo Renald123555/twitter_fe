@@ -139,8 +139,10 @@ function HomePost() {
     const response = await GetApi.updatePost(body)
     const res = await response.data
     if (res.message === 'Success') {
-      setTimeout(() => { history.go(0) }, 1100)
-
+      setEdit({ isEdit: false })
+      const response = await GetApi.getAllPosts('DESC')
+      const res = await response.data.data
+      setPost(res)
     }
   }
 
@@ -197,8 +199,9 @@ function HomePost() {
     const response = await GetApi.deletePost(body)
     const res = await response.data
     if (res.message === 'Success') {
-      setTimeout(() => { history.go(0) }, 1100)
-
+      const response = await GetApi.getAllPosts('DESC')
+      const res = await response.data.data
+      setPost(res)
     }
   };
   const handleShow = () => setShow(true);
