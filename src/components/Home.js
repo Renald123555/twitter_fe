@@ -28,7 +28,7 @@ function Home() {
   }
 
   return (
-    <div id="home" className='home container d-flex'>
+    <div id="home" className='home container d-flex' style={{ marginRight: "29rem" }}>
       <div className="col-3">
         <HomeNav />
       </div>
