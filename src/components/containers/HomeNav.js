@@ -113,7 +113,7 @@ function HomeNav() {
   };
 
   return (
-    <div id="homeNav" className='col-2'>
+    <div id="homeNav" className='col-8' style={{ flexBasis: "100%" }}>
       <div className='row sticky-top'>
         <div className='col'>
           <div className='row'>

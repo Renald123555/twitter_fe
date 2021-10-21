@@ -329,7 +329,7 @@ function HomePost() {
 
 
   return (
-    <div id="homeInput" className='col-6 ml-5 border-left border-right'>
+    <div id="homeInput" className='col-10 border-left border-right'>
       <div className='row border-bottom sticky-top bg-white'>
         <div className='p-3'>
           <span className='font-weight-bold h5'>Home</span>
