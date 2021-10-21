@@ -125,7 +125,14 @@ function HomePost() {
     const response = await GetApi.insertNewPost(body)
     const res = await response.data
     if (res.message === 'Success') {
-      history.go(0)
+      const response = await GetApi.getAllPosts('DESC')
+      const res = await response.data.data
+      setPost(res)
+      setValues({ text: '', images: '', imagePreview: '' })
+      setCategory("Entertainment")
+      setAds(false)
+      setCommercial(false)
+      setDate(moment().format("YYYY-MM-DD"))
     }
   }
 
