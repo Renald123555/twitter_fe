@@ -125,6 +125,10 @@ function HomePost() {
     const response = await GetApi.insertNewPost(body)
     const res = await response.data
     if (res.message === 'Success') {
+      toast.success("Tweet Posted", {
+        position: toast.POSITION.BOTTOM_RIGHT,
+        theme: "colored",
+      })
       const response = await GetApi.getAllPosts('DESC')
       const res = await response.data.data
       setPost(res)
