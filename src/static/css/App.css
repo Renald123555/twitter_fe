@@ -2,6 +2,8 @@
   cursor: pointer;
 }
 
+.pointer {cursor: pointer;}
+
 .stickyright {
   margin-left: auto;
 }
@@ -11,9 +13,6 @@
   /* color: #1da1f2; */
   /* opacity: 0.5; */
   border-radius: 35px;
-}
-
-.default-button {
 }
 
 .default-button:hover {

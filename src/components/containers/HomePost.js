@@ -160,6 +160,10 @@ function HomePost() {
   const deleteData = (id) => {
     setDeleteId(id)
     handleShow();
+    setTimeout(() => {
+      document.getElementsByClassName("close")[0].setAttribute("id", "closeModalCross")
+    }, 10);
+
   }
 
   const setGetData = async (filter) => {
@@ -363,13 +367,13 @@ function HomePost() {
                 <div className="row">
                   <div className="col-6">
                     <div className="form-check">
-                      <input id="categoryRadioEnt" className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked={category === "Entertainment"} onChange={onEntChanged} />
+                      <input id="categoryRadioEnt" className="pointer form-check-input" type="radio" name="flexRadioDefault" checked={category === "Entertainment"} onChange={onEntChanged} />
                       <label className="form-check-label" htmlFor="flexRadioDefault1">
                         Entertainment
                       </label>
                     </div>
                     <div className="form-check">
-                      <input id="categoryRadioNews" className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked={category === "News"} onChange={onNewsChanged} />
+                      <input id="categoryRadioNews" className="pointer form-check-input" type="radio" name="flexRadioDefault" checked={category === "News"} onChange={onNewsChanged} />
                       <label className="form-check-label" htmlFor="flexRadioDefault2">
                         News
                       </label>
@@ -377,13 +381,13 @@ function HomePost() {
                   </div>
                   <div className="col-6">
                     <div className="form-check">
-                      <input id="checkboxAds" className="form-check-input" type="checkbox" value="" checked={isAds} onChange={onAdsChanged} />
+                      <input id="checkboxAds" className="pointer form-check-input" type="checkbox" value="" checked={isAds} onChange={onAdsChanged} />
                       <label className="form-check-label" htmlFor="flexCheckDefault">
                         Ads
                       </label>
                     </div>
                     <div className="form-check">
-                      <input id="checkboxCommercial" className="form-check-input" type="checkbox" value="" checked={isCommercial} onChange={onCommercialChanged} />
+                      <input id="checkboxCommercial" className="pointer form-check-input" type="checkbox" value="" checked={isCommercial} onChange={onCommercialChanged} />
                       <label className="form-check-label" htmlFor="flexCheckDefault">
                         Commercial
                       </label>
@@ -430,8 +434,8 @@ function HomePost() {
                     <div className='ml-2'>
                       <div className='row float-right'>
                         {values.text.length >= 1 && values.text.length <= 240
-                          ? <div id="tweetButton" className='btn btn-primary rounded-pill font-weight-bold border-0' style={{ fontSize: '14px' }} onClick={insertNewPost}>Tweet</div>
-                          : <div id="tweetButtonDisabled" className='btn btn-primary rounded-pill font-weight-bold border-0 disabled' style={{ fontSize: '14px' }}>Tweet</div>}
+                          ? <div id="tweetButton" className='tweetButtonEnalbed btn btn-primary rounded-pill font-weight-bold border-0' style={{ fontSize: '14px' }} onClick={insertNewPost}>Tweet</div>
+                          : <div id="tweetButton" className='tweetButtonDisabled btn btn-primary rounded-pill font-weight-bold border-0 disabled' style={{ fontSize: '14px' }}>Tweet</div>}
                       </div>
                     </div>
                   </div>
@@ -462,16 +466,16 @@ function HomePost() {
               })
             : null}
         </div>
-        <Modal show={show} onHide={handleClose}>
+        <Modal id="deleteConfirmation" show={show} onHide={handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Delete tweet</Modal.Title>
           </Modal.Header>
           <Modal.Body>Are you sure want to delete this tweet?</Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
+            <Button id="closeButtonModal" variant="secondary" onClick={handleClose}>
               Close
             </Button>
-            <Button variant="primary" onClick={() => handleCloseAccepted(deleteId)}>
+            <Button id="deleteDataButtonModal" variant="primary" onClick={() => handleCloseAccepted(deleteId)}>
               Save Changes
             </Button>
           </Modal.Footer>

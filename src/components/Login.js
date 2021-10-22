@@ -9,10 +9,10 @@ import { UserContext } from "./context/UserContext";
 
 import TwitterLogo from "../static/image/twitter-logo.png";
 
-import { useTranslation } from "react-i18next";
-import LanguageSelect from "./languageSelect";
+// import { useTranslation } from "react-i18next";
+// import LanguageSelect from "./languageSelect";
 
-import { Navbar, Nav, Container } from "react-bootstrap";
+// import { Navbar, Nav, Container } from "react-bootstrap";
 
 function Login() {
   const [login, setLogin] = useContext(LoginContext);
@@ -63,7 +63,7 @@ function Login() {
     }));
   };
 
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
 
   return (
     <div id="login" className="login">
@@ -124,15 +124,15 @@ function Login() {
               {!_.isEmpty(values.email) && !_.isEmpty(values.password) ? (
                 <div
                   id="loginButton"
-                  className="btn btn-primary rounded-pill w-100 p-2 font-weight-bold"
+                  className="loginButtonEnable btn btn-primary rounded-pill w-100 p-2 font-weight-bold"
                   onClick={loginUser}
                 >
                   Login
                 </div>
               ) : (
                 <div
-                  id="loginDisabled"
-                  className="btn btn-primary rounded-pill w-100 p-2 font-weight-bold disabled"
+                  id="loginButton"
+                  className="loginButtonDisable btn btn-primary rounded-pill w-100 p-2 font-weight-bold disabled"
                   disabled
                 >
                   Login
@@ -140,11 +140,11 @@ function Login() {
               )}
             </div>
             <div className="row mt-4 mr-5 justify-content-center">
-              <div id="forgotPassword" className="text-primary" style={{ cursor: "pointer" }}>
+              {/* <div id="forgotPassword" className="text-primary" style={{ cursor: "pointer" }}>
                 Forgot password?
-              </div>
+              </div> */}
               <div className="text-primary">·</div>
-              <Link id="loginSignup" to="/signup" className="text-primary">
+              <Link id="loginSignup" to="/signup" className="text-primary mr-4">
                 Sign up for Twitter
               </Link>
 

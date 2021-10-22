@@ -55,6 +55,13 @@ function Home() {
         </div>
       </DragDropContext>
     </div>
+    // <div id="home" className='home container'>
+    //   <div className='row'>
+    //     <HomeNav />
+    //     <HomePost />
+    //     <HomeSearch />
+    //   </div>
+    // </div>
   )
 }
 

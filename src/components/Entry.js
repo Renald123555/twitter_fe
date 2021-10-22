@@ -40,7 +40,7 @@ function Entry() {
               <div className='row p-2'>
                 <div className='w-50'>
                   <Link to='/login'>
-                    <div id="LoginEntry" className='btn btn-outline-primary rounded-pill w-100 font-weight-bold'>
+                    <div id="loginEntry" className='btn btn-outline-primary rounded-pill w-100 font-weight-bold'>
                       Log in
                     </div>
                   </Link>

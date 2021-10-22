@@ -157,7 +157,7 @@ function Signup() {
               <div className='row ml-1'>
                 <div className='text-muted text-left' style={{ fontSize: '14px' }}>This will not be shown publicly. Confirm your own age, even if this account is for a business, a pet, or something else.</div>
               </div>
-              <div className='row ml-1 py-2 mb-5'>
+              <div className='row py-2 mb-5'>
                 <div className='btn-group'>
                   <select id="signupMonth" className='btn btn-outline-light dropdown-toggle border-secondary text-secondary' value={values.month} onChange={handleMonthChange}>
                     {/* <option value={values.month} default>Month</option> */}
