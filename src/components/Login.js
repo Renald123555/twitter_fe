@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import localforage from "localforage";
 import _ from "lodash";
@@ -23,6 +23,13 @@ function Login() {
   });
   const [errorMessage, setErrorMessage] = useState("");
   const history = useHistory();
+
+  useEffect(async () => {
+    const cacheToken = await localforage.getItem('token')
+    if (!_.isEmpty(cacheToken)) {
+      history.push('/home')
+    }
+  }, [])
 
   const loginUser = async () => {
     if (values.email && values.password) {

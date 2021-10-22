@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import _ from 'lodash'
+import localforage from 'localforage'
 
 import GetApi from './api/GetApi'
 
@@ -23,6 +24,13 @@ function Signup() {
   const [errorMessage, setErrorMessage] = useState('')
 
   const history = useHistory()
+
+  useEffect(async () => {
+    const cacheToken = await localforage.getItem('token')
+    if (!_.isEmpty(cacheToken)) {
+      history.push('/home')
+    }
+  }, [])
 
   useEffect(() => {
     for (let i = 1; i <= 31; i++) {

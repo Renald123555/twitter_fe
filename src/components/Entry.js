@@ -1,11 +1,22 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Link, useHistory } from 'react-router-dom'
+import localforage from 'localforage'
 
 import EntryImg from '../static/image/entry.png'
 
 import TwitterLogo from '../static/image/twitter-logo.png'
+import { isEmpty } from 'lodash'
 
 function Entry() {
+  const history = useHistory()
+
+  useEffect(async () => {
+    const cacheToken = await localforage.getItem('token')
+    if (!isEmpty(cacheToken)) {
+      history.push('/home')
+    }
+  }, [])
+
   return (
     <div id="entry" className='entry row mr-0'>
       <div className='col-6 pr-0'>
