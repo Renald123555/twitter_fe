@@ -7,6 +7,9 @@ import { UserContext } from "../context/UserContext";
 import twitterAvatar from '../../static/image/twitterAvatar.png'
 import userEvent from '@testing-library/user-event'
 
+import { isEmpty } from 'lodash'
+
+
 function HomeSearch() {
   const [search, setSearch] = useContext(SearchContext)
   const [user, setUser] = useContext(UserContext);
@@ -16,96 +19,168 @@ function HomeSearch() {
   }
 
   const trendBody = id => {
-    return (
-      <div id="followContainer" className='border-0 border ml-3 mb-4' style={{ backgroundColor: '#f6f6f6', borderRadius: '20px' }}>
-        <div>
-          <div className='p-3 border-bottom'>
-            <div className='font-weight-bold'>
-              Who to follow
-            </div>
-          </div>
+    if (id === "follow") {
+      return (
+        <div id="followContainer" className='border-0 border ml-3 mb-4' style={{ backgroundColor: '#f6f6f6', borderRadius: '20px' }}>
           <div>
-            <div className='pt-3 pb-3 border-bottom' style={{ fontSize: '14px' }}>
-              <div className='row'>
-                <div className='col-2 ml-4 pr-0 pl-0'>
-                  <img src={twitterAvatar} alt='' className='border rounded-circle w-100' />
-                </div>
-                <div className='col-4'>
-                  <div className='font-weight-bold'>
-                    Genshin
-                  </div>
-                  <div className='text-muted'>
-                    @Genshin
-                  </div>
-                </div>
-                <div className='col-2'>
-                  <div className='btn btn-outline-primary rounded-pill font-weight-bold' style={{ fontSize: '14px' }}>Follow</div>
-                </div>
+            <div className='p-3 border-bottom'>
+              <div className='font-weight-bold'>
+                Who to follow
               </div>
             </div>
-            <div className='pt-3 pb-3' style={{ fontSize: '14px' }}>
-              <div className='row'>
-                <div className='col-2 ml-4 pr-0 pl-0'>
-                  <img src={twitterAvatar} alt='' className='border rounded-circle w-100' />
-                </div>
-                <div className='col-4'>
-                  <div className='font-weight-bold'>
-                    Impact
+            <div>
+              <div className='pt-3 pb-3 border-bottom' style={{ fontSize: '14px' }}>
+                <div className='row'>
+                  <div className='col-2 ml-4 pr-0 pl-0'>
+                    <img src={twitterAvatar} alt='' className='border rounded-circle w-100' />
                   </div>
-                  <div className='text-muted'>
-                    @Impact
+                  <div className='col-4'>
+                    <div className='font-weight-bold'>
+                      Genshin
+                    </div>
+                    <div className='text-muted'>
+                      @Genshin
+                    </div>
+                  </div>
+                  <div className='col-2'>
+                    <div className='btn btn-outline-primary rounded-pill font-weight-bold' style={{ fontSize: '14px' }}>Follow</div>
                   </div>
                 </div>
-                <div className='col-2'>
-                  <div className='btn btn-outline-primary rounded-pill font-weight-bold' style={{ fontSize: '14px' }}>Follow</div>
+              </div>
+              <div className='pt-3 pb-3' style={{ fontSize: '14px' }}>
+                <div className='row'>
+                  <div className='col-2 ml-4 pr-0 pl-0'>
+                    <img src={twitterAvatar} alt='' className='border rounded-circle w-100' />
+                  </div>
+                  <div className='col-4'>
+                    <div className='font-weight-bold'>
+                      Impact
+                    </div>
+                    <div className='text-muted'>
+                      @Impact
+                    </div>
+                  </div>
+                  <div className='col-2'>
+                    <div className='btn btn-outline-primary rounded-pill font-weight-bold' style={{ fontSize: '14px' }}>Follow</div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    )
+      )
+    } else {
+      <div></div>
+    }
   }
 
-  // const followBody = provided => {
-  // }
-  const [body, setBody] = useState(["trend"])
-
-  const id2List = {
-    droppable: 'items',
-    droppable2: 'selected'
-  };
-
-  const getList = (id) => this.state[id2List[id]];
-
-  const onDragEnd = result => {
-    const { source, destination } = result;
-    // result = move(
-    //   this.getList(source.droppableId),
-    //   this.getList(destination.droppableId),
-    //   source,
-    //   destination
-    // );
-    const items = Array.from(body);
-    const [reorderedItem] = items.splice(result.source.index, 1);
-    items.splice(result.destination.index, 0, reorderedItem);
-
-    setBody(items);
+  const trendBody2 = id => {
+    if (id === "follow") {
+      return (
+        <div id="followContainer" className='border-0 border ml-3 mb-4' style={{ backgroundColor: '#f6f6f6', borderRadius: '20px' }}>
+          <div>
+            <div className='p-3 border-bottom'>
+              <div className='font-weight-bold'>
+                Who to follow
+              </div>
+            </div>
+            <div>
+              <div className='pt-3 pb-3 border-bottom' style={{ fontSize: '14px' }}>
+                <div className='row'>
+                  <div className='col-2 ml-4 pr-0 pl-0'>
+                    <img src={twitterAvatar} alt='' className='border rounded-circle w-100' />
+                  </div>
+                  <div className='col-4'>
+                    <div className='font-weight-bold'>
+                      Genshin
+                    </div>
+                    <div className='text-muted'>
+                      @Genshin
+                    </div>
+                  </div>
+                  <div className='col-2'>
+                    <div className='btn btn-outline-primary rounded-pill font-weight-bold' style={{ fontSize: '14px' }}>Follow</div>
+                  </div>
+                </div>
+              </div>
+              <div className='pt-3 pb-3' style={{ fontSize: '14px' }}>
+                <div className='row'>
+                  <div className='col-2 ml-4 pr-0 pl-0'>
+                    <img src={twitterAvatar} alt='' className='border rounded-circle w-100' />
+                  </div>
+                  <div className='col-4'>
+                    <div className='font-weight-bold'>
+                      Impact
+                    </div>
+                    <div className='text-muted'>
+                      @Impact
+                    </div>
+                  </div>
+                  <div className='col-2'>
+                    <div className='btn btn-outline-primary rounded-pill font-weight-bold' style={{ fontSize: '14px' }}>Follow</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )
+    } else {
+      <div></div>
+    }
   }
+
+  const [body, setBody] = useState(["follow"])
+  const [body2, setBody2] = useState([])
+
 
   const move = (source, destination, droppableSource, droppableDestination) => {
-    const sourceClone = Array.from(source);
-    const destClone = Array.from(destination);
-    const [removed] = sourceClone.splice(droppableSource.index, 1);
-
-    destClone.splice(droppableDestination.index, 0, removed);
+    // const sourceClone = Array.from(source);
+    // const destClone = Array.from(destination);
+    // const [removed] = sourceClone.splice(droppableSource.index, 1);
+    // destClone.splice(droppableDestination.index, 0, removed);
+    if (!isEmpty(source)) {
+      destination = ["follow"]
+      source = []
+    } else {
+      source = ["follow"]
+      destination = []
+    }
 
     const result = {};
-    result[droppableSource.droppableId] = sourceClone;
-    result[droppableDestination.droppableId] = destClone;
+    result[droppableSource.droppableId] = source;
+    result[droppableDestination.droppableId] = destination;
 
     return result;
   };
+
+  const onDragEnd = result => {
+    const e = document.getElementById("box");
+    const e2 = document.getElementById("box2");
+    let sourceArray = [];
+    let destinationArray = [];
+    if (isEmpty(e)) {
+      sourceArray = ["follow"]
+    } else {
+      destinationArray = ["follow"];
+    }
+    const { source, destination } = result;
+    result = move(
+      // getList(source.droppableId),
+      // getList(destination.droppableId),
+      sourceArray,
+      destinationArray,
+      source,
+      destination
+    );
+    // const items = Array.from(body);
+    // const [reorderedItem] = items.splice(result.source.index, 1);
+    // items.splice(result.destination.index, 0, reorderedItem);
+
+
+    setBody(result.homeSearch);
+    setBody2(result.homeSearch2)
+  }
 
   const getListStyle = (isDraggingOver) => ({
     background: isDraggingOver ? 'lightblue' : 'white',
@@ -130,43 +205,46 @@ function HomeSearch() {
             </div>
           </div>
           <div className="border border-black pr-3 pt-3 mt-3">
-            <Droppable droppableId="homeSearch" direction="vertical">
-              {(provided, snapshot) => (
-                <div ref={provided.innerRef} style={getListStyle(snapshot.isDraggingOver)}>
-                  {body.map((data, index) => {
-                    return (<Draggable key={data} draggableId={data} index={index}>
-                      {provided => (
-                        <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                          {/* {trendBody(data)} */}
-                        </div>
-                      )}
-                    </Draggable>
-                    )
-                  })}
-                  {provided.placeholder}
-                </div>
-              )}
-            </Droppable>
+            <div id="box1">
+              <Droppable droppableId="homeSearch" direction="vertical">
+                {(provided, snapshot) => (
+                  <div ref={provided.innerRef} style={getListStyle(snapshot.isDraggingOver)}>
+                    {body.map((data, index) => {
+                      return (<Draggable key={data} draggableId={data} index={index}>
+                        {provided => (
+                          <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                            {trendBody(data)}
+                          </div>
+                        )}
+                      </Draggable>
+                      )
+                    })}
+                    {provided.placeholder}
+                  </div>
+                )}
+              </Droppable>
+            </div>
           </div>
           <div className="border border-black pr-3 pt-3 mt-3">
-            <Droppable droppableId="homeSearch2" direction="vertical">
-              {(provided, snapshot) => (
-                <div ref={provided.innerRef} style={getListStyle(snapshot.isDraggingOver)}>
-                  {body.map((data, index) => {
-                    console.log("data nih", data)
-                    return (<Draggable key={data} draggableId={data} index={index}>
-                      {provided => (
-                        <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                          {trendBody(data)}
-                        </div>
-                      )}
-                    </Draggable>
-                    )
-                  })}
-                  {provided.placeholder}
-                </div>
-              )}
-            </Droppable>
+            <div id="box2">
+              <Droppable droppableId="homeSearch2" direction="vertical">
+                {(provided, snapshot) => (
+                  <div ref={provided.innerRef} style={getListStyle(snapshot.isDraggingOver)}>
+                    {body2.map((data, index) => {
+                      return (<Draggable key={data} draggableId={data} index={index}>
+                        {provided => (
+                          <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                            {trendBody(data)}
+                          </div>
+                        )}
+                      </Draggable>
+                      )
+                    })}
+                    {provided.placeholder}
+                  </div>
+                )}
+              </Droppable>
+            </div>
           </div>
         </div>
       </DragDropContext>
