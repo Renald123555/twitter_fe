@@ -275,7 +275,7 @@ function HomeNav() {
           </a>
           <span className='font-weight-bold' style={{ color: 'black' }}>HTML DnD</span>
           <div id="beforeDragNav" className="border border-dark pb-3 mt-3" style={{ padding: "inherit", width: "130%", height: "150px" }} onDrop={(e) => drop(e)} onDragOver={(e) => allowDrop(e)} onDragLeave={(e) => dragEnd(e)}>
-            <div id="buttonTweetLogout" style={{ padding: "inherit", borderRadius: "5px", paddingTop: "1px" }} className="bg-info mt-3" draggable onDragStart={(e) => drag(e)} onDragOver={(e) => dragOverText(e)}>
+            <div id="buttonTweetLogout" style={{ padding: "inherit", borderRadius: "5px", paddingTop: "1px", backgroundColor: '#f6f6f6' }} className="mt-3" draggable onDragStart={(e) => drag(e)} onDragOver={(e) => dragOverText(e)}>
               <div className='row mt-3'>
                 <div className='btn btn-primary rounded-pill font-weight-bold w-100 border-0 default-button' style={{ fontSize: '14px' }}>Tweet</div>
               </div>
