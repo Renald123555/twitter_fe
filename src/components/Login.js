@@ -152,7 +152,7 @@ function Login() {
               </div> */}
               <div className="text-primary">·</div>
               <Link id="loginSignup" to="/signup" className="text-primary mr-4">
-                Sign up for Twitter
+                Sign up for Twitty
               </Link>
 
             </div>
