@@ -215,6 +215,7 @@ function HomeSearch() {
               </div>
             </div>
           </div>
+          <span className='font-weight-bold mt-2' style={{ color: 'black' }}>React Beatiful DnD</span>
           <div className="border border-black pr-3 pt-3 mt-3">
             <div id="box1">
               <Droppable droppableId="homeSearch" direction="vertical">

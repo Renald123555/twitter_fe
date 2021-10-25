@@ -12,10 +12,12 @@ import Bookmark from '../../static/image/bookmark.png'
 import List from '../../static/image/lists.png'
 import Profile from '../../static/image/profile.png'
 import More from '../../static/image/more.png'
+import { ContactSupportOutlined } from '@material-ui/icons'
 
 function HomeNav() {
   const [tab, setTab] = useState('home')
   const history = useHistory()
+  const [color, setColor] = useState(true)
 
   const logoutClick = async () => {
     await localforage.removeItem('token')
@@ -114,16 +116,66 @@ function HomeNav() {
 
   const allowDrop = (ev) => {
     ev.preventDefault();
+    if (color === true) {
+      // console.log("jalan");
+      let b = document.getElementById("beforeDragNav")
+      b.setAttribute("class", "bg-info border border-dark mt-3 pb-3")
+    }
+    console.log("jalan aneh")
+    // let c = document.getElementById("beforeDragNav")
+    // c.setAttribute("class", "bg-info border border-dark mt-3 pb-3")
+  }
+
+  const allowDrop2 = (ev) => {
+    ev.preventDefault();
+    let a = document.getElementById("afterDragNav")
+    a.setAttribute("class", "bg-info border border-dark mt-3 pb-3")
+  }
+
+  const dragOverText = (ev) => {
+    ev.preventDefault();
+    console.log("netral");
+    console.log("set default");
+    setColor(false);
+    let a = document.getElementById("beforeDragNav")
+    a.setAttribute("class", "border border-dark mt-3 pb-3")
+  }
+
+  const dragEnd = (ev) => {
+    ev.preventDefault();
+    let a = document.getElementById("beforeDragNav")
+    a.setAttribute("class", "border border-dark mt-3 pb-3")
+  }
+
+  const dragEnd2 = (ev) => {
+    ev.preventDefault();
+    let a = document.getElementById("afterDragNav")
+    a.setAttribute("class", "border border-dark mt-3 pb-3")
+    setColor(true);
   }
 
   const drag = (ev) => {
     ev.dataTransfer.setData("text", ev.target.id);
+
+    let a = document.getElementById("beforeDragNav")
+    a.setAttribute("class", "border border-dark mt-3 pb-3")
+  }
+
+  const drag2 = (ev) => {
+    ev.dataTransfer.setData("text", ev.target.id);
+    let a = document.getElementById("afterDragNav")
+    a.setAttribute("class", "border border-dark mt-3 pb-3")
   }
 
   const drop = (ev) => {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
     ev.target.appendChild(document.getElementById(data));
+    let a = document.getElementById("afterDragNav")
+    a.setAttribute("class", "border border-dark mt-3 pb-3")
+    let b = document.getElementById("beforeDragNav")
+    b.setAttribute("class", "border border-dark mt-3 pb-3")
+
   }
 
   return (
@@ -142,7 +194,7 @@ function HomeNav() {
               <img src={TwitterLogo} alt='' className='w-75' />
             </div>
             <div className='col-8 align-self-center'>
-              <span className='font-weight-bold' style={{ color: 'black' }}>HTML DnD</span>
+              {/* <span className='font-weight-bold' style={{ color: 'black' }}>HTML DnD</span> */}
             </div>
           </a>
           {/* <ul className="dnd" style={{ listStyle: "none", padding: 0 }}>
@@ -225,8 +277,9 @@ function HomeNav() {
               <span className='font-weight-bold' style={{ color: tab === 'more' ? '#1da1f2' : 'black' }}>More</span>
             </div>
           </a>
-          <div id="beforeDragNav" className="border border-dark pb-3" style={{ padding: "inherit", width: "130%", height: "120px" }} onDrop={(e) => drop(e)} onDragOver={(e) => allowDrop(e)}>
-            <div id="buttonTweetLogout" draggable onDragStart={(e) => drag(e)}>
+          <span className='font-weight-bold' style={{ color: 'black' }}>HTML DnD</span>
+          <div id="beforeDragNav" className="border border-dark pb-3 mt-3" style={{ padding: "inherit", width: "130%", height: "120px" }} onDrop={(e) => drop(e)} onDragOver={(e) => allowDrop(e)} onDragLeave={(e) => dragEnd(e)}>
+            <div id="buttonTweetLogout" draggable onDragStart={(e) => drag(e)} onDragOver={(e) => dragOverText(e)}>
               <div className='row mt-3'>
                 <div className='btn btn-primary rounded-pill font-weight-bold w-100 border-0 default-button' style={{ fontSize: '14px' }}>Tweet</div>
               </div>
@@ -235,7 +288,7 @@ function HomeNav() {
               </div>
             </div>
           </div>
-          <div id="afterDragNav" className="border border-dark mt-3 pb-3" style={{ padding: "inherit", width: "130%", height: "120px" }} onDrop={(e) => drop(e)} onDragOver={(e) => allowDrop(e)}>
+          <div id="afterDragNav" className="border border-dark mt-3 pb-3" onDragStart={(e) => drag2(e)} style={{ padding: "inherit", width: "130%", height: "120px" }} onDragLeave={(e) => dragEnd2(e)} onDrop={(e) => drop(e)} onDragOver={(e) => allowDrop2(e)}>
 
           </div>
         </div>
