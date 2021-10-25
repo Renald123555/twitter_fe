@@ -11,7 +11,6 @@ import { UserContext } from '../context/UserContext'
 import { SearchContext } from '../context/SearchContext'
 import Form from "react-bootstrap/Form";
 import { toast } from "react-toastify";
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
 
 
@@ -222,74 +221,6 @@ function HomePost() {
     }
   };
   const handleShow = () => setShow(true);
-
-  // a little function to help us with reordering the result
-  const reorder = (list, startIndex, endIndex) => {
-    const result = Array.from(list);
-    const [removed] = result.splice(startIndex, 1);
-    result.splice(endIndex, 0, removed);
-
-    return result;
-  };
-
-  /**
-  * Moves an item from one list to another list.
-  */
-  const move = (source, destination, droppableSource, droppableDestination) => {
-    const sourceClone = Array.from(source);
-    const destClone = Array.from(destination);
-    const [removed] = sourceClone.splice(droppableSource.index, 1);
-
-    destClone.splice(droppableDestination.index, 0, removed);
-
-    const result = {};
-    result[droppableSource.droppableId] = sourceClone;
-    result[droppableDestination.droppableId] = destClone;
-
-    return result;
-  };
-
-  const [firstBox, setFirstBox] = useState(["descending"])
-  const [secondBox, setSecondBox] = useState([])
-
-  const onDragEnd = result => {
-    const { source, destination } = result;
-
-    // dropped outside the list
-    if (!destination) {
-      return;
-    }
-
-    if (source.droppableId === destination.droppableId) {
-      const items = reorder(
-        firstBox,
-        source.index,
-        destination.index
-      );
-
-      let state = { items };
-
-      if (source.droppableId === 'droppable2') {
-        state = items;
-      }
-
-      setSecondBox(state);
-    } else {
-      const result = move(
-        firstBox,
-        secondBox,
-        source,
-        destination
-      );
-
-      // this.setState({
-      //   items: result.droppable,
-      //   selected: result.droppable2
-      // });
-      setFirstBox(result.droppable)
-      setSecondBox(result.droppable2)
-    }
-  };
 
   const bodyData = (data) => {
     const now = moment(new Date())
@@ -522,66 +453,7 @@ function HomePost() {
         <div className='container border-bottom'>
           <div className='py-2 mx-2'>
             <div id="ascendingButton" className='btn btn-primary rounded-pill' onClick={() => setGetData('ASC')}>Ascending</div>
-            <DragDropContext onDragEnd={onDragEnd}>
-              {/* <div id="descendingButton" className='btn btn-primary rounded-pill ml-2' onClick={() => setGetData('DESC')}>Descending</div> */}
-              <Droppable droppableId="droppable">
-                {(provided, snapshot) => (
-                  <div
-                    ref={provided.innerRef}
-                    style={{ border: "1px solid black" }}
-                    className="py-3 mt-1">
-                    {firstBox.map((item, index) => (
-                      <Draggable
-                        key={item}
-                        draggableId={item}
-                        index={index}>
-                        {(provided, snapshot) => (
-                          <div
-                            ref={provided.innerRef}
-                            {...provided.draggableProps}
-                            {...provided.dragHandleProps}>
-                            {!isEmpty(item)
-                              ? <div id="descendingButton" className='btn btn-primary rounded-pill ml-2' onClick={() => setGetData('DESC')}>
-                                {item}
-                              </div>
-                              : null
-                            }
-                          </div>
-                        )}
-                      </Draggable>
-                    ))}
-                    {provided.placeholder}
-                  </div>
-                )}
-              </Droppable>
-              <Droppable droppableId="droppable2">
-                {(provided, snapshot) => (
-                  <div
-                    ref={provided.innerRef}
-                    style={{ border: "1px solid black" }}
-                    className="py-3">
-                    {secondBox.map((item, index) => (
-                      <Draggable
-                        key={item}
-                        draggableId={item}
-                        index={index}>
-                        {(provided, snapshot) => (
-                          <div
-                            ref={provided.innerRef}
-                            {...provided.draggableProps}
-                            {...provided.dragHandleProps}>
-                            <div id="descendingButton" className='btn btn-primary rounded-pill ml-2' onClick={() => setGetData('DESC')}>
-                              {item}
-                            </div>
-                          </div>
-                        )}
-                      </Draggable>
-                    ))}
-                    {provided.placeholder}
-                  </div>
-                )}
-              </Droppable>
-            </DragDropContext>
+            <div id="descendingButton" className='btn btn-primary rounded-pill ml-2' onClick={() => setGetData('DESC')}>Descending</div>
           </div>
         </div>
         <div id="post" className='container'>
