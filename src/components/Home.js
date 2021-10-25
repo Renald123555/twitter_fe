@@ -28,40 +28,40 @@ function Home() {
   }
 
   return (
-    <div id="home" className='home container d-flex' style={{ marginRight: "29rem" }}>
-      <div className="col-3">
-        <HomeNav />
-      </div>
-      <DragDropContext onDragEnd={onDragEnd}>
-        <div className='row'>
-          <Droppable droppableId="home" direction="horizontal" type="COLUMN">
-            {provided => (
-              <div ref={provided.innerRef} {...provided.droppableProps} className='d-flex'>
-
-                {component.map((data, index) => {
-                  return (<Draggable key={data} draggableId={data} index={index}>
-                    {provided => (
-                      <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} className={data === "HomePost" ? "col-10" : "col-4"}>
-                        {listComponent(data)}
-                      </div>
-                    )}
-                  </Draggable>
-                  )
-                })}
-                {provided.placeholder}
-              </div>
-            )}
-          </Droppable>
-        </div>
-      </DragDropContext>
-    </div>
-    // <div id="home" className='home container'>
-    //   <div className='row'>
+    // <div id="home" className='home container d-flex' style={{ marginRight: "29rem" }}>
+    //   <div className="col-3">
     //     <HomeNav />
-    //     <HomePost />
-    //     <HomeSearch />
     //   </div>
+    //   <DragDropContext onDragEnd={onDragEnd}>
+    //     <div className='row'>
+    //       <Droppable droppableId="home" direction="horizontal" type="COLUMN">
+    //         {provided => (
+    //           <div ref={provided.innerRef} {...provided.droppableProps} className='d-flex'>
+
+    //             {component.map((data, index) => {
+    //               return (<Draggable key={data} draggableId={data} index={index}>
+    //                 {provided => (
+    //                   <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps} className={data === "HomePost" ? "col-10" : "col-4"}>
+    //                     {listComponent(data)}
+    //                   </div>
+    //                 )}
+    //               </Draggable>
+    //               )
+    //             })}
+    //             {provided.placeholder}
+    //           </div>
+    //         )}
+    //       </Droppable>
+    //     </div>
+    //   </DragDropContext>
     // </div>
+    <div id="home" className='home container'>
+      <div className='d-flex'>
+        <HomeNav />
+        <HomePost />
+        <HomeSearch />
+      </div>
+    </div>
   )
 }
 

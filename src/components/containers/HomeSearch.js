@@ -148,9 +148,12 @@ function HomeSearch() {
     }
 
     const result = {};
+    if (isEmpty(droppableDestination)) {
+      droppableDestination = { droppableId: droppableSource.droppableId, index: 0 }
+    }
+
     result[droppableSource.droppableId] = source;
     result[droppableDestination.droppableId] = destination;
-
     return result;
   };
 
@@ -177,7 +180,14 @@ function HomeSearch() {
     // const [reorderedItem] = items.splice(result.source.index, 1);
     // items.splice(result.destination.index, 0, reorderedItem);
 
-
+    let keys = Object.keys(result)
+    if (keys.length < 2) {
+      if (keys.includes('homeSearch2')) {
+        result.homeSearch = []
+      } else if (keys.includes('homeSearch')) {
+        result.homeSearch2 = []
+      }
+    }
     setBody(result.homeSearch);
     setBody2(result.homeSearch2)
   }
