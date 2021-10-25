@@ -37,7 +37,7 @@ function Entry() {
                 <div className='font-weight-bold' style={{ fontSize: '54px' }}>Happening now</div>
               </div>
               <div className='row p-3'>
-                <div className='font-weight-bold h3'>Join Twitter today.</div>
+                <div className='font-weight-bold h3'>Join Twitty today.</div>
               </div>
               <div className='row p-2'>
                 <div className='w-50'>
