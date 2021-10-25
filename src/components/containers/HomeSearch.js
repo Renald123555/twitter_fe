@@ -195,7 +195,8 @@ function HomeSearch() {
   const getListStyle = (isDraggingOver) => ({
     background: isDraggingOver ? 'lightblue' : 'white',
     padding: 8,
-    width: 250
+    width: 250,
+    height: 230
   });
 
   return (
