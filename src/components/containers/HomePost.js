@@ -137,7 +137,7 @@ function HomePost() {
       setCategory("Entertainment")
       setAds(false)
       setCommercial(false)
-      setDate(moment().format("YYYY-MM-DD"))
+      setDate(moment(date).format("YYYY-MM-DD"))
     }
   }
 
@@ -286,7 +286,7 @@ function HomePost() {
               <img src={require('../../static/upload/' + data.image).default} alt='' className='postImage w-100 border' style={{ borderRadius: '15px' }} />
             </div>}
           <div className='postDateInput row text-muted mt-1' style={{ fontSize: "14px" }}>
-            {date}
+            {data.dateInput}
           </div>
           <div className='row mt-3'>
             <div className='col-3 pr-0'>
