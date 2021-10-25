@@ -118,7 +118,7 @@ function HomeNav() {
     ev.preventDefault();
     if (color === true) {
       let b = document.getElementById("beforeDragNav")
-      b.setAttribute("class", "bg-info border border-dark mt-3 pb-3")
+      b.setAttribute("class", "bg-info border border-dark mb-3 pb-3")
     }
     // let c = document.getElementById("beforeDragNav")
     // c.setAttribute("class", "bg-info border border-dark mt-3 pb-3")
@@ -127,26 +127,26 @@ function HomeNav() {
   const allowDrop2 = (ev) => {
     ev.preventDefault();
     let a = document.getElementById("afterDragNav")
-    a.setAttribute("class", "bg-info border border-dark mt-3 pb-3")
+    a.setAttribute("class", "bg-info border border-dark mb-3 pb-3")
   }
 
   const dragOverText = (ev) => {
     ev.preventDefault();
     setColor(false);
     let a = document.getElementById("beforeDragNav")
-    a.setAttribute("class", "border border-dark mt-3 pb-3")
+    a.setAttribute("class", "border border-dark mb-3 pb-3")
   }
 
   const dragEnd = (ev) => {
     ev.preventDefault();
     let a = document.getElementById("beforeDragNav")
-    a.setAttribute("class", "border border-dark mt-3 pb-3")
+    a.setAttribute("class", "border border-dark mb-3 pb-3")
   }
 
   const dragEnd2 = (ev) => {
     ev.preventDefault();
     let a = document.getElementById("afterDragNav")
-    a.setAttribute("class", "border border-dark mt-3 pb-3")
+    a.setAttribute("class", "border border-dark mb-3 pb-3")
     setColor(true);
   }
 
@@ -154,13 +154,13 @@ function HomeNav() {
     ev.dataTransfer.setData("text", ev.target.id);
 
     let a = document.getElementById("beforeDragNav")
-    a.setAttribute("class", "border border-dark mt-3 pb-3")
+    a.setAttribute("class", "border border-dark mb-3 pb-3")
   }
 
   const drag2 = (ev) => {
     ev.dataTransfer.setData("text", ev.target.id);
     let a = document.getElementById("afterDragNav")
-    a.setAttribute("class", "border border-dark mt-3 pb-3")
+    a.setAttribute("class", "border border-dark mb-3 pb-3")
   }
 
   const drop = (ev) => {
@@ -168,9 +168,9 @@ function HomeNav() {
     var data = ev.dataTransfer.getData("text");
     ev.target.appendChild(document.getElementById(data));
     let a = document.getElementById("afterDragNav")
-    a.setAttribute("class", "border border-dark mt-3 pb-3")
+    a.setAttribute("class", "border border-dark mb-3 pb-3")
     let b = document.getElementById("beforeDragNav")
-    b.setAttribute("class", "border border-dark mt-3 pb-3")
+    b.setAttribute("class", "border border-dark mb-3 pb-3")
 
   }
 
@@ -274,7 +274,8 @@ function HomeNav() {
             </div>
           </a>
           <span className='font-weight-bold' style={{ color: 'black' }}>HTML DnD</span>
-          <div id="beforeDragNav" className="border border-dark pb-3 mt-3" style={{ padding: "inherit", width: "130%", height: "150px" }} onDrop={(e) => drop(e)} onDragOver={(e) => allowDrop(e)} onDragLeave={(e) => dragEnd(e)}>
+          <div id="htmlAContainer">A</div>
+          <div id="beforeDragNav" className="border border-dark pb-3 mb-3" style={{ padding: "inherit", width: "130%", height: "150px" }} onDrop={(e) => drop(e)} onDragOver={(e) => allowDrop(e)} onDragLeave={(e) => dragEnd(e)}>
             <div id="buttonTweetLogout" style={{ padding: "inherit", borderRadius: "5px", paddingTop: "1px", backgroundColor: '#D0D3D4', paddingRight: "20px", paddingLeft: "20px" }} className="border border-dark mt-3" draggable onDragStart={(e) => drag(e)} onDragOver={(e) => dragOverText(e)}>
               <div className='row mt-3'>
                 <div className='btn btn-primary rounded-pill font-weight-bold w-100 border-0 default-button' style={{ fontSize: '14px' }}>Tweet</div>
@@ -284,7 +285,8 @@ function HomeNav() {
               </div>
             </div>
           </div>
-          <div id="afterDragNav" className="border border-dark mt-3 pb-3" onDragStart={(e) => drag2(e)} style={{ padding: "inherit", width: "130%", height: "150px" }} onDragLeave={(e) => dragEnd2(e)} onDrop={(e) => drop(e)} onDragOver={(e) => allowDrop2(e)}>
+          <div id="htmlBContainer">B</div>
+          <div id="afterDragNav" className="border border-dark mb-3 pb-3" onDragStart={(e) => drag2(e)} style={{ padding: "inherit", width: "130%", height: "150px" }} onDragLeave={(e) => dragEnd2(e)} onDrop={(e) => drop(e)} onDragOver={(e) => allowDrop2(e)}>
 
           </div>
         </div>

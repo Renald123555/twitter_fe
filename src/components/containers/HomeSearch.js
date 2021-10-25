@@ -215,8 +215,9 @@ function HomeSearch() {
               </div>
             </div>
           </div>
-          <span className='font-weight-bold mt-2' style={{ color: 'black' }}>React Beatiful DnD</span>
-          <div className="border border-black pr-3 pt-3 mt-3">
+          <span className='font-weight-bold mt-2 mb-3' style={{ color: 'black' }}>React Beautiful DnD</span>
+          <div id="beautifulAContainer">A</div>
+          <div className="border border-black pr-3 pt-3 mb-3">
             <div id="box1">
               <Droppable droppableId="homeSearch" direction="vertical">
                 {(provided, snapshot) => (
@@ -237,7 +238,8 @@ function HomeSearch() {
               </Droppable>
             </div>
           </div>
-          <div className="border border-black pr-3 pt-3 mt-3">
+          <div id="beautifulBContainer">B</div>
+          <div className="border border-black pr-3 pt-3">
             <div id="box2">
               <Droppable droppableId="homeSearch2" direction="vertical">
                 {(provided, snapshot) => (
