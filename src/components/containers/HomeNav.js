@@ -117,11 +117,9 @@ function HomeNav() {
   const allowDrop = (ev) => {
     ev.preventDefault();
     if (color === true) {
-      // console.log("jalan");
       let b = document.getElementById("beforeDragNav")
       b.setAttribute("class", "bg-info border border-dark mt-3 pb-3")
     }
-    console.log("jalan aneh")
     // let c = document.getElementById("beforeDragNav")
     // c.setAttribute("class", "bg-info border border-dark mt-3 pb-3")
   }
@@ -134,8 +132,6 @@ function HomeNav() {
 
   const dragOverText = (ev) => {
     ev.preventDefault();
-    console.log("netral");
-    console.log("set default");
     setColor(false);
     let a = document.getElementById("beforeDragNav")
     a.setAttribute("class", "border border-dark mt-3 pb-3")
